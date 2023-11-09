@@ -1,8 +1,18 @@
 package mariangelamarasciuolo.BlogDayThree.exceptions;
 
-public class BadRequestException extends RuntimeException{
-    public BadRequestException(String message){
+import org.springframework.validation.ObjectError;
+
+import java.util.List;
+
+public class BadRequestException extends RuntimeException {
+    private List<ObjectError> errors;
+
+    public BadRequestException(String message) {
         super(message);
+    }
+
+    public BadRequestException(List<ObjectError> errors) {
+        this.errors = errors;
     }
 
 }
